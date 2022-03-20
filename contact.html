@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title>Contact Us</title>
-    <link rel="shortcut icon" type="image/png" href="contact.png">
-    <link rel="stylesheet" href="contact.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-   </head>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <link rel="shortcut icon" type="image/png" href="contact.png">
+  <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+  <script type="text/javascript">
+    function sendEmail() {
+      Email.send({
+        Host: "smtp.gmail.com",
+        Username: "stebinsteel@gmail.com",
+        Password: "stebinmathew",
+        To: 'stebinsteel@gmail.com',
+        Cc: 'albintharayil123@gmail.com',
+        From : document.getElementById("email").value,
+        Subject: "New Enquiry on Contact Form",
+        Body : "Name: " + document.getElementById("name").value
+              + "<br> Email: " + document.getElementById("email").value
+              + "<br> Message: " + document.getElementById("message").value
+      })
+        .then(function (message) {
+          alert("mail sent successfully")
+        });
+    }
+  </script>
+</head>
 <body>
   <div class="navbar">
-    <ul> 
+    <ul>
       <li class="active">
         <a href="index.html">
           <i class='bx bx-home icon' title="Home"></i>
@@ -20,8 +42,8 @@
       </li>
       <li>
         <a href="About.html">
-          <i class='bx bx-user icon'title="About Us"></i>
-          <i class='bx bxs-user activeIcon'title="About Us"></i>
+          <i class='bx bx-user icon' title="About Us"></i>
+          <i class='bx bxs-user activeIcon' title="About Us"></i>
         </a>
       </li>
       <li>
@@ -34,63 +56,49 @@
     </ul>
   </div>
 
-  <script>
-
-  const navBar = document.querySelector(".navbar")
-        allLi = document.querySelectorAll("li");
-
-  allLi.forEach((li, index) => {
-     li.addEventListener("click" , e =>{
-       e.preventDefault(); //preventing from submitting
-       navBar.querySelector(".active").classList.remove("active");
-       li.classList.add("active");
-
-       const indicator = document.querySelector(".indicator");
-       indicator.style.transform = `translateX(calc(${index * 90}px))`;
-     });
-  });
-
-  </script>
-
- <div class="container">
+  <div class="container">
     <div class="content">
       <div class="left-side">
         <div class="address details">
           <i class="fas fa-map-marker-alt"></i>
           <div class="topic">Address</div>
+          <a href="https://maps.app.goo.gl/KSgjNyiAgAmj9PsG9">
           <div class="text-one">Shop No-7, Govinda Apt,</div>
           <div class="text-two">Nr. St.Anne's Convent School,</div>
           <div class="text-two">Vidya mandir marg,</div>
           <div class="text-two">Vasai West</div>
+          </a>
         </div>
         <div class="phone details">
           <i class="fas fa-phone-alt"></i>
           <div class="topic">Phone</div>
-          <div class="text-one">+91-9823-22-0777</div>
-          <div class="text-two">+91-7709-05-6648</div>
+          <div class="text-one"><a href="tel:+919823220777">+91-9823-22-0777</a></div>
+          <div class="text-two"><a href="tel:+917709056648">+91-7709-05-6648</a></div>
         </div>
         <div class="email details">
           <i class="fas fa-envelope"></i>
           <div class="topic">Email</div>
-          <div class="text-one">stebinsabu40503@gmail.com</div>
+          <div class="text-one"><a href="mailto:stebinsabu40503@gmail.com">stebinsabu40503@gmail.com</a></div>
         </div>
       </div>
       <div class="right-side">
         <div class="topic-text">Send us a message</div>
-        <p>If you have any work from me or any types of queries, you can send me message from here. It's my pleasure to help you.</p>
-        <form action="mail.php" method="post">
-        <div class="input-box">
-          <input type="text" name="name" placeholder="Enter your name">
-        </div>
-        <div class="input-box">
-          <input type="text" name="email" placeholder="Enter your email">
-        </div>
-        <div class="input-box message-box">
-            <textarea name="message" id="Enter your queries" placeholder="Enter your queries" cols="30" rows="10"></textarea>  
-        </div>
+        <p>If you have any work from me or any types of queries, you can send me message from here. It's my pleasure to
+          help you.</p>
+        <form onsubmit="sendEmail(); reset(); return false;">
+          <div class="input-box">
+            <input type="text" id="name" placeholder="Enter your name" required>
+          </div>
+          <div class="input-box">
+            <input type="email" id="email" placeholder="Enter your email id" required>
+          </div>
+          <div class="input-box message-box">
+            <textarea id="message" placeholder="Enter your queries..." cols="30" rows="10"></textarea>
+          </div>
           <button type="submit">Send Now</button>
-       </form>
-      </div>
+       </div>
+      </form>
+
     </div>
-  </body>
+ </body>
 </html>
