@@ -10,28 +10,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://smtpjs.com/v3/smtp.js"></script>
-
-  <script type="text/javascript">
-    function sendEmail() {
-      Email.send({
-        Host: "smtp.gmail.com",
-        Username: "stebinsteel@gmail.com",
-        Password: "stebinmathew",
-        To: 'stebinsteel@gmail.com',
-        Cc: 'albintharayil123@gmail.com',
-        From : document.getElementById("email").value,
-        Subject: "New Enquiry on Contact Form",
-        Body : "Name: " + document.getElementById("name").value
-              + "<br> Email: " + document.getElementById("email").value
-              + "<br> Message: " + document.getElementById("message").value
-      })
-        .then(function (message) {
-          alert("mail sent successfully")
-        });
-    }
-  </script>
+  <script src="index.js"></script>
 </head>
-<body>
+<body oncontextmenu="return false">
   <div class="navbar">
     <ul>
       <li class="active">
