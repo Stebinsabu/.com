@@ -1,103 +1,109 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
-    <title>Stebin Steel Engineering Works</title>
-     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+<head>
+   <meta charset="utf-8">
+   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+   <title>Stebin Steel Engineering Works</title>
+    <style>
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat',sans-serif;
+}
 nav{
-  display: flex;
-  position: fixed;
-  background: hsl(0, 0%, 0%);
-  width: 100%;
-  height: 10%;
-  z-index: 5;
+  background: #151515;
+  padding: 5px 40px;
 }
-.navbar{
-  left: 75%;
-  top: 0%;
-  position:absolute;
-  width: 24.5%;
-  padding: 5px 0;
-  z-index: 5;
-}
-
-.logo a{
-  display:flex;
-  text-decoration: none;
-  margin-left: 15px;
-  margin-top: 15px;
-  font-size: 35px;
-  color: #fff;
-  font-weight: 600;
-}
-.menu ul{
-  display: inline-flex;
-}
-.nav-links{
-  max-width: 1250px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  background: #fff;
-  padding: 13px 7px;
-  border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.8);
-  transition: 1s;
-}
-.nav-links li{
+nav ul{
+  
   list-style: none;
-  margin: 0 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
-.nav-links li a{
+nav ul li{
+  padding: 15px 0;
+  cursor: pointer;
+}
+nav ul li.items{
   position: relative;
-  color: rgb(43, 5, 131);
-  font-size: 20px;
-  font-weight: 50;
-  padding: 6px 0;
-  text-decoration: none;
+  width: auto;
+  margin: 0 16px;
+  text-align: center;
+  order: 3;
 }
-.nav-links li a:before{
+nav li a:before{
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   height: 3px;
   width: 0%;
-  background: #06c8f8;
+  background: #44f84d;
   border-radius: 12px;
   transition: all 0.4s ease;
 }
-.nav-links li a:hover:before{
+nav li a:hover:before{
   width: 100%;
 }
-.nav-links li.center a:before{
+nav li.center a:before{
   left: 50%;
   transform: translateX(-50%);
 }
-.nav-links li.upward a:before{
+nav li.upward a:before{
   width: 100%;
   bottom: -5px;
   opacity: 0;
 }
-.nav-links li.upward a:hover:before{
+nav li.upward a:hover:before{
   bottom: 0px;
   opacity: 1;
 }
-.nav-links li.forward a:before{
+nav li.forward a:before{
   width: 100%;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.4s ease;
 }
-.nav-links li.forward a:hover:before{
+nav li.forward a:hover:before{
   transform: scaleX(1);
   transform-origin: left;
 }
-
+nav ul li.logo{
+  flex: 1;
+  color: white;
+  font-size: 35px;
+  font-weight: 600;
+  cursor: default;
+  user-select: none;
+  margin-left: 35px;
+}
+nav ul li a{
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  transition: .4s;
+}
+nav ul li:hover a{
+  color: #44f84d;
+}
+nav ul li i{
+  font-size: 23px;
+}
+nav ul li.btn{
+  display: none;
+}
+nav ul li.btn.hide i:before{
+  content: '\f00d';
+}
 .img{
-  background-image: linear-gradient(rgba(1,9,30,0.4),rgba(1,9,30,0.4)),url('smoke welding.jpeg');
+  background-image: linear-gradient(rgba(1,9,30,0.4),rgba(1,9,30,0.4)),url('/Images/Background.jpeg');
   width: 100%;
   height: 97vh;
   background-size: cover;
@@ -166,69 +172,93 @@ button:hover span{
 button:hover{
   border: none;
 }
-@media screen and (max-width: 600px) {
+@media all and (max-width: 900px){
   nav{
-  display: flex;
-  position: fixed;
-  background: hsl(0, 0%, 0%);
-  width: 100%;
-  height: 10%;
-  z-index: 5;
-}
-.navbar{
-  left: 75%;
-  top: 0%;
-  position:absolute;
-  width: 24.5%;
-  padding: 5px 0;
-  z-index: 5;
-}
-
-  .logo a{
-    font-size: 10px;
-    line-height: 20px;
-    display: flex;
+    padding: 5px 10px;
   }
-  .menu{
-      position: fixed;
-      height: 100%;
-      width: 320px;
-      left: -100%;
-      top: 0;
-      padding: 20px;
-      background-color: var(--side-nav);
-      z-index: 100;
-      transition: all 0.4s ease;
+  nav ul li.logo{
+    font-size: 23px;
+    margin-left: 2px;
+  }
+  nav ul li.items{
+    width: 100%;
+    display: none;
+  }
+  nav ul li.items.show{
+    display: block;
+  }
+  nav ul li.btn{
+    display: block;
+  }
+  nav ul li.items:hover{
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px #33ffff,
+                inset 0 0 10px #66ffff;
+  }
+  nav ul li.items:hover:after{
+    opacity: 0;
   }
   .center{
   position: absolute;
-  top: 75%;
+  margin-top: -35px;
   right: -130px;
-  font size: 10px;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  padding: 0 97px;
+  font size: 5px;
+  padding: 0 250px;
   text-align: center;
 }
+.center .title{
+  color: rgb(246, 250, 247);
+  font-size: 23px;
+  font-weight: 600;
+}
+.center .btns button{
+  height: 55px;
+  width: 180px;
+  border-radius: 25px;
+  border: 2px solid #009688;
+  background: transparent;
+  margin: 10px 80px;
+  font-size: 20px;
+  font-weight: 550;
+  padding: 10px 10px;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.img{
+  background-image: linear-gradient(rgba(1,9,30,0.4),rgba(1,9,30,0.4)),url('/Images/Background.jpeg');
+  width: 100%;
+  height: 89vh;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+}
+.img::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
 }
 
+}
+</style>
+</head>
 
-
-     </style>
-  </head>
 <body>
-  <nav>
-     <img class="logo-img" src="logo.jpeg" width="65" height="65" alt="Logo" Align="margin-top">
-    <div class ="logo"><a href="#">STEBIN STEEL ENGINEERING WORKS</a></div>
-    <div class="navbar">
-      <ul class="nav-links">
-        <li><a href="https://stebinsabu.github.io/.com/">Home</a></li>
-        <li><a href="/Website/About.html">About</a></li>
-        <li class="upward"><a href="/Website/image.html">Images</a></li>
-        <li><a href="https://stebinsabu.github.io/contact/">Contact</a></li>
+   <nav>
+      <ul>
+        <img class="logo-img" src="/Images/logo.jpeg" width="85" height="85" alt="Logo" Align="margin-top" >
+         <li class="logo">Stebin Steel Engineering Works</li>
+         <li class="items"><a href="#">Home</a></li>
+         <li class="items"><a href="#">About</a></li>
+         <li class="items"><a href="/Images.html">Gallery</a></li>
+         <li class="items"><a href="/contact.css">Contact</a></li>
+         <li class="btn"><a href="#"><i class="fas fa-bars"></i></a></li>
       </ul>
-    </div>
- </nav>
+   </nav>
    <div class="img">
     
    </div>
@@ -241,5 +271,13 @@ button:hover{
       <button onClick="window.location.href='https://g.page/r/Cb4P0_FPJNOaEB0/review';"><span></span>Feedbacks</button>
      </div>
    </div>
+   <script>
+      $(document).ready(function(){
+        $('.btn').click(function(){
+          $('.items').toggleClass("show");
+          $('ul li').toggleClass("hide");
+        });
+      });
+   </script>
 </body>
 </html>
